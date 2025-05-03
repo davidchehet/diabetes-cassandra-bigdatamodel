@@ -29,5 +29,7 @@ for _, row in df.iterrows():
     if _ % 1000 == 0:
         capacity += 1
         print(f'{capacity}% Uploaded')
+
+session.shutdown()
     
 
