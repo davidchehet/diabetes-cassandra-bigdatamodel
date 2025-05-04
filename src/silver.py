@@ -29,9 +29,6 @@ batch = BatchStatement()
 batch_size = 100
 processed_rows = 0
 
-ten_percent = 10000
-row_count = 0
-
 # Process each row and insert into silver_level table
 for row in rows:
 
@@ -62,7 +59,6 @@ for row in rows:
             row.blood_glucose_level,
             row.diabetes
         ))
-        row_count += 1
         processed_rows += 1
 
         if processed_rows % batch_size == 0:
