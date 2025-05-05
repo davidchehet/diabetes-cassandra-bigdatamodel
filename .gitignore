@@ -1,4 +1,4 @@
 /credentials/
 .venv
 /src/__pycache__/
-/ne_110m_admin_1_states_provinces/
+/src/ne_110m_admin_1_states_provinces/
