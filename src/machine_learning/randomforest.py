@@ -13,7 +13,7 @@ if session:
 else:
     print('Error occurred')
 
-get_numeric_data = get_query_by_tag('src/cql_scripts/silver_scripts.cql', 'RANDOM_FOREST')
+get_numeric_data = get_query_by_tag('src/cql_scripts/silver_scripts.cql', 'ML_QUERY')
 
 rows = session.execute(get_numeric_data)
 df = pd.DataFrame(list(rows))
