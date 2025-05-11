@@ -68,7 +68,7 @@ The project includes three distinct visualizations generated using Matplotlib an
    - **Run scripts from the root of the directory**
    - **How to run script that is directly in src(e.g bronze.py)**
    => `poetry run python src/_______.py`
-   - **How to run script that is in a nested directory(e.g `/visualizations')
+   - **How to run script that is in a nested directory(e.g `/visualizations')**
    => `poetry run python -m src.directory_name.file_name`
 
 ## Potential Improvements
