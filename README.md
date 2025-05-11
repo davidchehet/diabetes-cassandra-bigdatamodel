@@ -62,14 +62,14 @@ The project includes three distinct visualizations generated using Matplotlib an
     ```bash
     poetry install
     ```
-2.  **Configure Cassandra Connection:** Ensure your Cassandra cluster is running and update the connection details (IP address, username, password) in your `src/config.py` file. Place your secure connect bundle (if applicable) in the `credentials/` directory. Update the json file and zip file names to however you named it in your version.
+2.  **Configure Cassandra Connection:** You must create an instance of a cassandra database using DataStax Astra and create a keyspace 'diabetes'. Ensure your Cassandra cluster is running. You will need both the secure connection zip file and the json containing your clientId, secret, and token. These should live in the `credentials` directory. After, update the json file and zip file names appropriately inside the `config.py` file.
    
 3.  **Run Scripts:** Execute the Python scripts in the `src/` and `src/visualizations/` directories to perform the ELT process, generate visualizations, and train the machine learning model.
    - **Run scripts from the root of the directory**
    - **How to run script that is directly in src(e.g bronze.py)**
    => `poetry run python src/_______.py`
    - **How to run script that is in a nested directory(e.g `/visualizations')
-   => `poetry run python -m src.directory_name.file_name` <= **NO .py**
+   => `poetry run python -m src.directory_name.file_name`
 
 ## Potential Improvements
 
