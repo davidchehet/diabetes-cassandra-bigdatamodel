@@ -28,15 +28,21 @@ The project includes three distinct visualizations generated using Matplotlib an
 
 2.  **Prevalence of Diabetes by US State (Choropleth Map):** Displays the geographic distribution of diabetes prevalence across the United States, using state-level data aggregated in the `gold_diabetes_by_location` table and a US states shapefile. The visualization script is `src/visualizations/visualize_diabetes_by_location.py`.
 
-3.  **Comparison of Precision, Recall, and F1-Score for ML Models (Bar Chart):** Compares the performance metrics (precision, recall, and F1-score for the diabetes-positive class) of three different machine learning models (Random Forest, K-Nearest Neighbors, and Gaussian Naive Bayes) trained on the diabetes dataset. The visualization script is `src/visualizations/compare_models.py`.
+3.  **Correlation Matrix**: Displays the correlation between fields like age, bmi, hba1c levels, and blood glucose levels in both diabetics and non-diabetics to try to extract insight.
+
+4.  **Comparison of Precision, Recall, and F1-Score for ML Models (Bar Chart):** Compares the performance metrics (precision, recall, and F1-score for the diabetes-positive class) of three different machine learning models (Random Forest, K-Nearest Neighbors, and Gaussian Naive Bayes) trained on the diabetes dataset. The visualization script is `src/visualizations/compare_models.py`.
 
 ## Machine Learning Model
 
-A Random Forest Classifier was built to predict the presence of diabetes based on various patient features. The model was trained and evaluated using the cleaned data from the `silver_level` table.
+1. **Random Forest Classifier** was built to predict the presence of diabetes based on various patient features. The model was trained and evaluated using the cleaned data from the `silver_level` table.
 
-- The `src/ml.py` script handles data splitting, model training, prediction, and evaluation using metrics such as accuracy, precision, recall, F1-score, and a confusion matrix.
+- The `src/machine_learning/randomforest.py` script handles data splitting, model training, prediction, and evaluation using metrics such as accuracy, precision, recall, F1-score, and a confusion matrix.
 - Feature importance was also analyzed to understand which factors were most influential in the model's predictions.
 - Parameter tuning using GridSearchCV was performed to optimize the model's performance, with a focus on balancing precision and recall for the diabetes-positive class.
+
+2. **K Nearest Neighbors** was built to compare to the random forest classifier. This can be found in `src/machine_learning/knn.py`.
+
+3. **Gaussian Naive Bayes** was also built to compare to the other machine learning models in terms of precision, recall and f1 scores. Can be found at `src/machine_learning/gnb.py`.
 
 ## Technologies Used
 
@@ -56,9 +62,14 @@ A Random Forest Classifier was built to predict the presence of diabetes based o
     ```bash
     poetry install
     ```
-2.  **Configure Cassandra Connection:** Ensure your Cassandra cluster is running and update the connection details (IP address, username, password) in your `src/config.py` file. Place your secure connect bundle (if applicable) in the `config/` directory.
-3.  **Download Shapefile:** Download the "Admin 1 - States, Provinces" shapefile from [Natural Earth Data](https://www.naturalearthdata.com/downloads/110m-cultural-vectors/) and extract the `ne_110m_admin_1_states_provinces` folder into the `data/` directory.
-4.  **Run Scripts:** Execute the Python scripts in the `src/` and `src/visualizations/` directories to perform the ELT process, generate visualizations, and train the machine learning model.
+2.  **Configure Cassandra Connection:** Ensure your Cassandra cluster is running and update the connection details (IP address, username, password) in your `src/config.py` file. Place your secure connect bundle (if applicable) in the `credentials/` directory. Update the json file and zip file names to however you named it in your version.
+   
+3.  **Run Scripts:** Execute the Python scripts in the `src/` and `src/visualizations/` directories to perform the ELT process, generate visualizations, and train the machine learning model.
+   - **Run scripts from the root of the directory**
+   - **How to run script that is directly in src(e.g bronze.py)**
+   => `poetry run python src/_______.py`
+   - **How to run script that is in a nested directory(e.g `/visualizations')
+   => `poetry run python -m src.directory_name.file_name` <= **NO .py**
 
 ## Potential Improvements
 
@@ -67,4 +78,8 @@ A Random Forest Classifier was built to predict the presence of diabetes based o
 * Develop an interactive dashboard using tools like Flask or Dash to present the findings.
 * Perform more in-depth feature engineering to potentially improve the predictive power of the machine learning model.
 
-This project provides a solid foundation for analyzing medical data using a big data application and demonstrates a structured approach to the ELT workflow, data visualization, and machine learning.
+## Screenshots of Visualizations
+![Figure_1](https://github.com/user-attachments/assets/170bbbee-d8e3-4220-a41d-0f2f30616162)
+![Figure_2](https://github.com/user-attachments/assets/309a52a1-6399-41c6-8bb0-707b3f661578)
+![Figure_3](https://github.com/user-attachments/assets/64823072-ebf5-47f5-966d-d5366da43452)
+![Figure_4](https://github.com/user-attachments/assets/354090ba-a0f4-4d42-ba2a-b5d7738eec1b)
