@@ -1,4 +1,4 @@
-# diabetes-cassandra-bigdatamodel
+# Diabetes Detection Software
 ## ELT Workflow
 
 This project implements a three-layer Medallion architecture following the ELT paradigm:
