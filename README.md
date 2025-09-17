@@ -1,4 +1,43 @@
 # Diabetes Detection Software
+## Description
+
+This project is a machine learning model that is trained on 100,000 patient records, with the goal to detect diabetes in patients while minimizing false negative test results. The software efficiently loads data using an ELT structure, and follows a big data medallion architecture pipeline through processing, cleansing, and aggregate tables for analysis. The model in its current state has a ~90% recall score in detecting true diabetic patients.
+
+## Motivation for this project
+
+As someone who was once prediabetic, I found that learning about my condition early allowed me seek care and reverse the diagnosis. Diabetes is a prevalent disease, especially in the United States. It is important to leverage technology to detect diabetes in patients that way they can receive proper care on time, avoid serious side effects, or even reverse the illness. I wished to use software as a tool to detect this disease, and combine machine learning and big data with helping others in need.
+
+## Setup and Installation
+
+1.  **Install Dependencies:**
+    ```bash
+    poetry install
+    ```
+2.  **Configure Cassandra Connection:** You must create an instance of a cassandra database using DataStax Astra and create a keyspace 'diabetes'. Ensure your Cassandra cluster is running. You will need both the secure connection zip file and the json containing your clientId, secret, and token. These should live in the `credentials` directory. After, update the json file and zip file names appropriately inside the `config.py` file.
+   
+3.  **Run Scripts:** Execute the Python scripts in the `src/` and `src/visualizations/` directories to perform the ELT process, generate visualizations, and train the machine learning model.
+   - **Run scripts from the root of the directory**
+   - **How to run script that is directly in src(e.g bronze.py)**
+   => `poetry run python src/_______.py`
+   - **How to run script that is directly in a nested directory(e.g visualizations)**
+   => `poetry run python -m src.directory_name.file_name`
+
+## Contributing
+
+### Clone the repo
+```bash
+git clone [https://github.com/xyz/zipzod@latest](https://github.com/davidchehet/diabetes-cassandra-bigdatamodel)
+cd diabetes-cassandra-bigdatamodel
+```
+
+### Install Dependencies
+ ```bash
+ poetry install
+ ```
+
+### Submit a pull request
+If you'd like to contribute, please fork the repository and open a pull request to the `main` branch.
+
 ## ELT Workflow
 
 This project implements a three-layer Medallion architecture following the ELT paradigm:
@@ -55,21 +94,6 @@ The project includes three distinct visualizations generated using Matplotlib an
 * **GeoPandas:** Library for working with geospatial data (used for the choropleth map).
 * **Scikit-learn:** Library for machine learning algorithms and evaluation metrics.
 * **Poetry:** Dependency management and packaging tool for Python.
-
-## Setup and Installation
-
-1.  **Install Dependencies:**
-    ```bash
-    poetry install
-    ```
-2.  **Configure Cassandra Connection:** You must create an instance of a cassandra database using DataStax Astra and create a keyspace 'diabetes'. Ensure your Cassandra cluster is running. You will need both the secure connection zip file and the json containing your clientId, secret, and token. These should live in the `credentials` directory. After, update the json file and zip file names appropriately inside the `config.py` file.
-   
-3.  **Run Scripts:** Execute the Python scripts in the `src/` and `src/visualizations/` directories to perform the ELT process, generate visualizations, and train the machine learning model.
-   - **Run scripts from the root of the directory**
-   - **How to run script that is directly in src(e.g bronze.py)**
-   => `poetry run python src/_______.py`
-   - **How to run script that is directly in a nested directory(e.g visualizations)**
-   => `poetry run python -m src.directory_name.file_name`
 
 ## Potential Improvements
 
