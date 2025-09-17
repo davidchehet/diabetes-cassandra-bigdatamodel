@@ -26,7 +26,7 @@ As someone who was once prediabetic, I found that learning about my condition ea
 
 ### Clone the repo
 ```bash
-git clone [https://github.com/xyz/zipzod@latest](https://github.com/davidchehet/diabetes-cassandra-bigdatamodel)
+git clone https://github.com/davidchehet/diabetes-cassandra-bigdatamodel
 cd diabetes-cassandra-bigdatamodel
 ```
 
